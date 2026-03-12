@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lolla 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+color:white;
+text-align:center;
+overflow-x:hidden;
+
+background: linear-gradient(
+45deg,
+#ff0080,
+#ffcc00,
+#00ffc6,
+#0099ff,
+#b000ff
+);
+
+background-size:400% 400%;
+animation:bg 12s infinite alternate;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%}
+100%{background-position:100% 50%}
+}
+
+.title{
+font-family:'Bebas Neue',sans-serif;
+font-size:90px;
+letter-spacing:6px;
+margin-top:60px;
+text-shadow:0 0 30px rgba(0,0,0,0.5);
+}
+
+.subtitle{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.stage{
+
+margin:auto;
+width:80%;
+max-width:900px;
+background:black;
+border:6px solid #ffcc00;
+padding:40px;
+box-shadow:
+0 0 40px #ff0080,
+0 0 60px #00ffc6,
+inset 0 0 40px black;
+
+border-radius:14px;
+
+}
+
+#countdown{
+
+font-family:'Bebas Neue',sans-serif;
+font-size:110px;
+letter-spacing:6px;
+
+}
+
+.playlist{
+margin-top:50px;
+display:flex;
+justify-content:center;
+}
+
+iframe{
+border-radius:14px;
+box-shadow:0 0 30px rgba(0,0,0,0.5);
+}
+
+/* STICKERS */
+
+.sticker{
+
+position:absolute;
+font-family:'Bebas Neue';
+font-size:26px;
+background:white;
+color:black;
+padding:8px 14px;
+transform:rotate(-12deg);
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+
+}
+
+.s1{top:10%;left:5%}
+.s2{top:20%;right:6%}
+.s3{bottom:20%;left:8%}
+.s4{bottom:25%;right:10%}
+.s5{top:40%;left:2%}
+.s6{top:65%;right:4%}
+
+/* ARTISTS FLOATING */
+
+.floating{
+
+position:absolute;
+font-size:24px;
+animation:float 18s linear infinite;
+white-space:nowrap;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(120vh);
+opacity:0;
+}
+
+10%{opacity:1}
+
+90%{opacity:1}
+
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="title">
+LOLLA 2026
+</div>
+
+<div class="subtitle">
+contagem regressiva para interlagos
+</div>
+
+<div class="stage">
+
+<div id="countdown"></div>
+
+</div>
+
+<div class="playlist">
+
+<iframe
+src="https://open.spotify.com/embed/playlist/13W4EXHEgvBckkh3vKChgm"
+width="350"
+height="380"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+</div>
+
+
+<div class="sticker s1">SEE YOU AT LOLLAPALOOZA</div>
+<div class="sticker s2">INTERLAGOS 2026</div>
+<div class="sticker s3">MUSIC • ART • VIBES</div>
+<div class="sticker s4">FESTIVAL MODE</div>
+<div class="sticker s5">LOLLA ENERGY</div>
+<div class="sticker s6">DANCE ALL NIGHT</div>
+
+
+<script>
+
+const eventDate = new Date("March 26, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+const distance = eventDate-now;
+
+const d=Math.floor(distance/(1000*60*60*24));
+const h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const m=Math.floor((distance%(1000*60*60))/(1000*60));
+const s=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+d+"d "+h+"h "+m+"m "+s+"s";
+
+},1000);
+
+
+
+const artists=[
+
+"🎤 Sabrina Carpenter",
+"🌙 Lorde",
+"🔥 Doechii",
+"💿 Addison Rae",
+"🐴 Horsegiirl",
+"⭐ Chappell Roan",
+"💎 Marina"
+
+];
+
+function createFloating(){
+
+const el=document.createElement("div");
+el.className="floating";
+
+el.innerText=artists[Math.floor(Math.random()*artists.length)];
+
+el.style.left=Math.random()*100+"vw";
+el.style.animationDuration=(10+Math.random()*15)+"s";
+
+document.body.appendChild(el);
+
+setTimeout(()=>{el.remove()},25000);
+
+}
+
+setInterval(createFloating,1400);
+
+</script>
+
+</body>
+</html>

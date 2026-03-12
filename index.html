@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lolla 2026</title>
+<title>Lolla Countdown 2026</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,101 +19,140 @@ color:white;
 text-align:center;
 overflow-x:hidden;
 
+/* fundo festival */
+
 background: linear-gradient(
 45deg,
-#ff0080,
-#ffcc00,
-#00ffc6,
-#0099ff,
-#b000ff
+#ff006e,
+#ffbe0b,
+#00f5d4,
+#3a86ff,
+#8338ec
 );
 
 background-size:400% 400%;
-animation:bg 12s infinite alternate;
+animation:bgMove 12s infinite alternate;
+
 }
 
-@keyframes bg{
+/* animação fundo */
+
+@keyframes bgMove{
+
 0%{background-position:0% 50%}
 100%{background-position:100% 50%}
+
 }
+
+/* titulo */
 
 .title{
-font-family:'Bebas Neue',sans-serif;
-font-size:90px;
+
+font-family:'Bebas Neue';
+font-size:clamp(50px,9vw,120px);
 letter-spacing:6px;
-margin-top:60px;
-text-shadow:0 0 30px rgba(0,0,0,0.5);
+margin-top:40px;
+
 }
 
+/* subtitulo */
+
 .subtitle{
-font-size:22px;
+
+font-size:clamp(16px,3vw,26px);
 margin-bottom:30px;
+
 }
+
+/* palco */
 
 .stage{
 
 margin:auto;
-width:80%;
+width:90%;
 max-width:900px;
+
 background:black;
-border:6px solid #ffcc00;
-padding:40px;
+border:6px solid #ffbe0b;
+
+padding:30px;
+
 box-shadow:
-0 0 40px #ff0080,
-0 0 60px #00ffc6,
+
+0 0 40px #ff006e,
+0 0 60px #00f5d4,
 inset 0 0 40px black;
 
 border-radius:14px;
 
 }
 
+/* contador */
+
 #countdown{
 
-font-family:'Bebas Neue',sans-serif;
-font-size:110px;
-letter-spacing:6px;
+font-family:'Bebas Neue';
+font-size:clamp(60px,12vw,140px);
+letter-spacing:4px;
 
 }
 
+/* playlist */
+
 .playlist{
+
 margin-top:50px;
 display:flex;
 justify-content:center;
+padding:20px;
+
 }
 
 iframe{
+
+width:90%;
+max-width:380px;
+height:380px;
+
 border-radius:14px;
 box-shadow:0 0 30px rgba(0,0,0,0.5);
+
 }
 
-/* STICKERS */
+/* stickers */
 
 .sticker{
 
 position:absolute;
+
 font-family:'Bebas Neue';
-font-size:26px;
+font-size:clamp(16px,2vw,28px);
+
 background:white;
 color:black;
+
 padding:8px 14px;
+
 transform:rotate(-12deg);
+
 box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
 }
 
-.s1{top:10%;left:5%}
-.s2{top:20%;right:6%}
-.s3{bottom:20%;left:8%}
-.s4{bottom:25%;right:10%}
-.s5{top:40%;left:2%}
-.s6{top:65%;right:4%}
+/* posições */
 
-/* ARTISTS FLOATING */
+.s1{top:8%;left:5%}
+.s2{top:18%;right:6%}
+.s3{bottom:18%;left:8%}
+.s4{bottom:22%;right:10%}
+
+/* artistas flutuando */
 
 .floating{
 
 position:absolute;
-font-size:24px;
+font-size:clamp(16px,2vw,24px);
+
 animation:float 18s linear infinite;
 white-space:nowrap;
 
@@ -120,8 +161,10 @@ white-space:nowrap;
 @keyframes float{
 
 0%{
+
 transform:translateY(120vh);
 opacity:0;
+
 }
 
 10%{opacity:1}
@@ -129,23 +172,60 @@ opacity:0;
 90%{opacity:1}
 
 100%{
+
 transform:translateY(-10vh);
 opacity:0;
+
+}
+
+}
+
+/* confete */
+
+.confetti{
+
+position:absolute;
+width:8px;
+height:8px;
+
+background:white;
+
+animation:confettiFall linear infinite;
+
+}
+
+@keyframes confettiFall{
+
+0%{
+
+transform:translateY(-10vh) rotate(0deg);
+
+}
+
+100%{
+
+transform:translateY(110vh) rotate(720deg);
+
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="title">
+
 LOLLA 2026
+
 </div>
 
 <div class="subtitle">
+
 contagem regressiva para interlagos
+
 </div>
 
 <div class="stage">
@@ -157,30 +237,30 @@ contagem regressiva para interlagos
 <div class="playlist">
 
 <iframe
+
 src="https://open.spotify.com/embed/playlist/13W4EXHEgvBckkh3vKChgm"
-width="350"
-height="380"
+
 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+
 </iframe>
 
 </div>
-
 
 <div class="sticker s1">SEE YOU AT LOLLAPALOOZA</div>
 <div class="sticker s2">INTERLAGOS 2026</div>
 <div class="sticker s3">MUSIC • ART • VIBES</div>
 <div class="sticker s4">FESTIVAL MODE</div>
-<div class="sticker s5">LOLLA ENERGY</div>
-<div class="sticker s6">DANCE ALL NIGHT</div>
-
 
 <script>
 
-const eventDate = new Date("March 26, 2026 00:00:00").getTime();
+/* contador */
+
+const eventDate = new Date("March 19, 2026 00:00:00").getTime();
 
 setInterval(()=>{
 
 const now = new Date().getTime();
+
 const distance = eventDate-now;
 
 const d=Math.floor(distance/(1000*60*60*24));
@@ -189,11 +269,12 @@ const m=Math.floor((distance%(1000*60*60))/(1000*60));
 const s=Math.floor((distance%(1000*60))/1000);
 
 document.getElementById("countdown").innerHTML =
+
 d+"d "+h+"h "+m+"m "+s+"s";
 
 },1000);
 
-
+/* artistas flutuando */
 
 const artists=[
 
@@ -210,11 +291,13 @@ const artists=[
 function createFloating(){
 
 const el=document.createElement("div");
+
 el.className="floating";
 
 el.innerText=artists[Math.floor(Math.random()*artists.length)];
 
 el.style.left=Math.random()*100+"vw";
+
 el.style.animationDuration=(10+Math.random()*15)+"s";
 
 document.body.appendChild(el);
@@ -225,7 +308,32 @@ setTimeout(()=>{el.remove()},25000);
 
 setInterval(createFloating,1400);
 
+/* confete */
+
+function createConfetti(){
+
+const conf=document.createElement("div");
+
+conf.className="confetti";
+
+conf.style.left=Math.random()*100+"vw";
+
+conf.style.background=
+
+["#ff006e","#ffbe0b","#00f5d4","#3a86ff","#8338ec"][Math.floor(Math.random()*5)];
+
+conf.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>{conf.remove()},10000);
+
+}
+
+setInterval(createConfetti,200);
+
 </script>
 
 </body>
+
 </html>

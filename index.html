@@ -19,8 +19,6 @@ color:white;
 text-align:center;
 overflow-x:hidden;
 
-/* fundo festival */
-
 background: linear-gradient(
 45deg,
 #ff006e,
@@ -35,39 +33,30 @@ animation:bgMove 12s infinite alternate;
 
 }
 
-/* animação fundo */
-
 @keyframes bgMove{
-
 0%{background-position:0% 50%}
 100%{background-position:100% 50%}
-
 }
 
 /* titulo */
 
 .title{
-
 font-family:'Bebas Neue';
 font-size:clamp(50px,9vw,120px);
 letter-spacing:6px;
 margin-top:40px;
-
 }
 
 /* subtitulo */
 
 .subtitle{
-
 font-size:clamp(16px,3vw,26px);
 margin-bottom:30px;
-
 }
 
 /* palco */
 
 .stage{
-
 margin:auto;
 width:90%;
 max-width:900px;
@@ -78,68 +67,64 @@ border:6px solid #ffbe0b;
 padding:30px;
 
 box-shadow:
-
 0 0 40px #ff006e,
 0 0 60px #00f5d4,
 inset 0 0 40px black;
 
 border-radius:14px;
-
 }
 
 /* contador */
 
 #countdown{
-
 font-family:'Bebas Neue';
 font-size:clamp(60px,12vw,140px);
 letter-spacing:4px;
-
 }
 
 /* playlist */
 
 .playlist{
-
-margin-top:50px;
+margin-top:60px;
 display:flex;
 justify-content:center;
-padding:20px;
-
 }
 
 iframe{
-
 width:90%;
 max-width:380px;
 height:380px;
-
 border-radius:14px;
 box-shadow:0 0 30px rgba(0,0,0,0.5);
+}
 
+/* mural */
+
+.mural{
+margin-top:80px;
+padding:40px;
+background:rgba(0,0,0,0.6);
+border-top:4px solid #ffbe0b;
+}
+
+.mural h2{
+font-family:'Bebas Neue';
+font-size:clamp(30px,5vw,50px);
+margin-bottom:10px;
 }
 
 /* stickers */
 
 .sticker{
-
 position:absolute;
-
 font-family:'Bebas Neue';
 font-size:clamp(16px,2vw,28px);
-
 background:white;
 color:black;
-
 padding:8px 14px;
-
 transform:rotate(-12deg);
-
 box-shadow:0 4px 10px rgba(0,0,0,0.3);
-
 }
-
-/* posições */
 
 .s1{top:8%;left:5%}
 .s2{top:18%;right:6%}
@@ -149,33 +134,25 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 /* artistas flutuando */
 
 .floating{
-
 position:absolute;
 font-size:clamp(16px,2vw,24px);
-
 animation:float 18s linear infinite;
 white-space:nowrap;
-
 }
 
 @keyframes float{
 
 0%{
-
 transform:translateY(120vh);
 opacity:0;
-
 }
 
 10%{opacity:1}
-
 90%{opacity:1}
 
 100%{
-
 transform:translateY(-10vh);
 opacity:0;
-
 }
 
 }
@@ -183,29 +160,21 @@ opacity:0;
 /* confete */
 
 .confetti{
-
 position:absolute;
 width:8px;
 height:8px;
-
 background:white;
-
 animation:confettiFall linear infinite;
-
 }
 
 @keyframes confettiFall{
 
 0%{
-
 transform:translateY(-10vh) rotate(0deg);
-
 }
 
 100%{
-
 transform:translateY(110vh) rotate(720deg);
-
 }
 
 }
@@ -217,32 +186,42 @@ transform:translateY(110vh) rotate(720deg);
 <body>
 
 <div class="title">
-
 LOLLA 2026
-
 </div>
 
 <div class="subtitle">
-
 contagem regressiva para interlagos
-
 </div>
 
 <div class="stage">
-
 <div id="countdown"></div>
-
 </div>
 
 <div class="playlist">
 
 <iframe
-
 src="https://open.spotify.com/embed/playlist/13W4EXHEgvBckkh3vKChgm"
-
 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-
 </iframe>
+
+</div>
+
+<div class="mural">
+
+<h2>Mural do Festival 🎤</h2>
+
+<p>Deixe sua mensagem para o Lolla 2026!</p>
+
+<script src="https://giscus.app/client.js"
+        data-repo="SEUUSUARIO/lolla2026"
+        data-repo-id="COLOQUE_O_ID"
+        data-category="General"
+        data-category-id="COLOQUE_O_ID"
+        data-mapping="pathname"
+        data-theme="dark"
+        crossorigin="anonymous"
+        async>
+</script>
 
 </div>
 
@@ -260,7 +239,6 @@ const eventDate = new Date("March 19, 2026 00:00:00").getTime();
 setInterval(()=>{
 
 const now = new Date().getTime();
-
 const distance = eventDate-now;
 
 const d=Math.floor(distance/(1000*60*60*24));
@@ -269,7 +247,6 @@ const m=Math.floor((distance%(1000*60*60))/(1000*60));
 const s=Math.floor((distance%(1000*60))/1000);
 
 document.getElementById("countdown").innerHTML =
-
 d+"d "+h+"h "+m+"m "+s+"s";
 
 },1000);
@@ -277,7 +254,6 @@ d+"d "+h+"h "+m+"m "+s+"s";
 /* artistas flutuando */
 
 const artists=[
-
 "🎤 Sabrina Carpenter",
 "🌙 Lorde",
 "🔥 Doechii",
@@ -285,7 +261,6 @@ const artists=[
 "🐴 Horsegiirl",
 "⭐ Chappell Roan",
 "💎 Marina"
-
 ];
 
 function createFloating(){
@@ -293,11 +268,9 @@ function createFloating(){
 const el=document.createElement("div");
 
 el.className="floating";
-
 el.innerText=artists[Math.floor(Math.random()*artists.length)];
 
 el.style.left=Math.random()*100+"vw";
-
 el.style.animationDuration=(10+Math.random()*15)+"s";
 
 document.body.appendChild(el);
@@ -319,7 +292,6 @@ conf.className="confetti";
 conf.style.left=Math.random()*100+"vw";
 
 conf.style.background=
-
 ["#ff006e","#ffbe0b","#00f5d4","#3a86ff","#8338ec"][Math.floor(Math.random()*5)];
 
 conf.style.animationDuration=(5+Math.random()*5)+"s";
